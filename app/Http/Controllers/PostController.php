@@ -4,9 +4,16 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Post;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\PostRequest;
 
 class PostController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->authorizeResource(Post::class, 'post');
+    }    
     /**
      * Display a listing of the resource.
      *
@@ -52,9 +59,6 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        // if (Auth::user()->cannot('view', $post)) {
-        //     abort(403);
-        // }
         return view('posts.show',compact('post'));
     }
 
@@ -78,7 +82,11 @@ class PostController extends Controller
      */
     public function update(PostRequest $request, Post $post)
     {
-        $post->update($request->all());
+        $validated = $request->validated();
+        if (!$request->has('visible')) {
+            $validated['visible'] = 0;
+        }
+        $post->update($validated);
         return redirect()->route('posts.index')->with('success','Post updated successfully');
     }
 

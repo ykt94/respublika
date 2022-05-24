@@ -17,27 +17,29 @@
     <div class="flex flex-col mt-10">
         <div class="flex flex-col">
             <div class="inline-block min-w-full overflow-hidden align-middle border-b border-gray-200 shadow sm:rounded-lg">
-
-                @if ($message = Session::get('success'))
+                @if ( $message = Session::get('success'))
                 <div class="p-3 rounded bg-green-500 text-green-100 mb-4 m-3">
                     <span>{{ $message }}</span>
                 </div>
                 @endif
-
                 <table class="min-w-full">
                     <tr>
                         <th class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50">No</th>
                         <th class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50">Name</th>
                         <th class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50">Body</th>
+                        <th class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50">Visible</th>
                         <th class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50" width="180px">Action</th>
                     </tr>
                     <tbody class="bg-white">
-                        {{ $i = 0 }}
+                        @php
+                            $i = 0;
+                        @endphp
                         @foreach ($posts as $post)
                         <tr>
                             <td class="px-6 whitespace-no-wrap border-b border-gray-200">{{ ++$i }}</td>
                             <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">{{ $post->theme }}</td>
                             <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">{{ $post->content }}</td>
+                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">{{ $post->visible }}</td>
                             <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
                                 <form action="{{ route('posts.destroy',$post->id) }}" method="POST">
 

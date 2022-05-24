@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,8 +14,11 @@ use App\Http\Controllers\PostController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-//Route::get('/posts', [PostController::class,'index'])->middleware('verified');
-Route::resource('posts', PostController::class)->middleware('verified');;
+
+Route::resource('posts', PostController::class);
+
+Route::get('/users', [UserController::class, 'index'])->name('users.index');
+Route::put('/users/{id}',[UserController::class, 'update'])->name('users.update');
 
 Route::get('/', function () {
     return view('welcome');
