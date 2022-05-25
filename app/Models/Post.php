@@ -18,5 +18,10 @@ class Post extends Model
         static::creating(function ($query) {
             $query->user_id = auth()->id();
         });
-    }    
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

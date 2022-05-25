@@ -24,8 +24,8 @@ class UserController extends Controller
 
     public function update(Request $request, $id)
     {
-        if ($request->file('avatar')) {
-            $file = $request->file('avatar'); 
+        if ($file = $request->file('avatar')) {
+            //$file = $request->file('avatar'); 
             $upload_folder = 'public/image';
             $path = Storage::putFile($upload_folder, $file);
             $user = User::find($id);

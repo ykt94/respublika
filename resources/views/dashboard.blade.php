@@ -10,16 +10,15 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
                     <div class="flex justify-begin mt-10">
-                        <a href="{{ route('posts.index') }}" class="px-2 py-1 rounded-md bg-blue-500 text-sky-100 hover:bg-blue-700">List of posts</a>
+                        <a href="{{ route('posts.index') }}" class="px-2 py-1 rounded-md bg-blue-500 text-sky-100 hover:bg-blue-700">Posts</a>
                     </div>
                 </div>
                 <div class="p-6 bg-white border-b border-gray-200">
                     <div class="flex justify-begin mt-10">
-                        <a href="{{ route('users.index') }}" class="px-2 py-1 rounded-md bg-blue-500 text-sky-100 hover:bg-blue-700">List of users</a>
+                        <a href="{{ route('users.index') }}" class="px-2 py-1 rounded-md bg-blue-500 text-sky-100 hover:bg-blue-700">Users</a>
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
 </x-app-layout>
